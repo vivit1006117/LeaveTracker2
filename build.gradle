@@ -1,0 +1,38 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.0.BUILD-SNAPSHOT'
+	}
+	repositories {
+		mavenCentral()
+		maven { url "https://repo.spring.io/snapshot" }
+		maven { url "https://repo.spring.io/milestone" }
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.10'
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+	maven { url "https://repo.spring.io/snapshot" }
+	maven { url "https://repo.spring.io/milestone" }
+}
+
+
+dependencies {
+	compile 'org.springframework.boot:spring-boot-starter-web:1.4.3.RELEASE'
+	testCompile 'org.springframework.boot:spring-boot-starter-test'
+	compile 'com.google.api-client:google-api-client:1.22.0'
+	compile 'com.google.oauth-client:google-oauth-client-jetty:1.22.0'
+	compile 'com.google.apis:google-api-services-calendar:v3-rev240-1.22.0'
+}
